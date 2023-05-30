@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+  <record id="biko_biko_forecast_report_wizard_view" model="ir.ui.view">
+    <field name="name">BIKO: report wizard</field>
+    <field name="model">biko.report.forecast.wizard</field>
+    <field name="arch" type="xml">
+      <form string="Forecast Report (HOTKEY)">
+        <sheet>
+          <group>
+            <field name="company_id" />
+            <field name="categories_ids" widget="many2many_tags" />
+            <field name="product_ids" widget="many2many_tags" />
+          </group>
+        </sheet>
+        <footer>
+          <group>
+            <button name="open_report" string="Open report" type="object"
+              class="btn-primary" />
+            <button string="Cancel" class="btn-default" special="cancel" />
+          </group>
+        </footer>
+      </form>
+    </field>
+  </record>
+
+  <!-- menu -->
+  <record id="action_biko_forecast_report_wizard" model="ir.actions.act_window">
+    <field name="name">Forecast Report (HOTKEY)</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">biko.report.forecast.wizard</field>
+    <field name="view_mode">form</field>
+    <field name="target">new</field>
+    <field name="view_id" ref="biko_biko_forecast_report_wizard_view" />
+  </record>
+
+  <menuitem id="menu_biko_forecast_report" name="Forecast Report (HOTKEY)"
+    parent="stock.menu_warehouse_report" sequence="101"
+    action="biko_report_forecast.action_biko_forecast_report_wizard" />
+
+</odoo>

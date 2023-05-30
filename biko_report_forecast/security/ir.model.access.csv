@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_biko_fr_wizard,access.biko_report.biko_report_forecast_wizard,model_biko_report_forecast_wizard,base.group_user,1,1,1,1
+access_biko_fr_report,access.biko_report.biko_report_forecast_report,model_biko_report_forecast,base.group_user,1,1,1,1

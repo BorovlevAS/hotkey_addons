@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="biko_report_forecast" model="ir.ui.view">
+        <field name="name">Forecast Report (HOTKEY)</field>
+        <field name="model">biko.report.forecast</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="default_code" />
+                <field name="product_id"/>
+                <field name="min_qty"/>
+                <field name="min_qty_multiple" />
+                <field name="uom_id" />
+                <field name="qty_demand" />
+                <field name="qty_done" />
+                <field name="qty_reserved" />
+                <field name="qty_rest_demand" />
+                <field name="rest_quantity" />
+                <field name="rest_reserved_quantity" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="biko_report_forecast_search" model="ir.ui.view">
+        <field name="name">Forecast Report (HOTKEY) (search view)</field>
+        <field name="model">biko.report.forecast</field>
+        <field name="arch" type="xml">
+            <search string="Forecast Report (HOTKEY)">
+                <group expand="0" string="Group By">
+                    <!-- <filter string="Company" name="group_company_id"
+                        context="{'group_by': 'company_id'}" />
+                    <filter string="Product Category" name="group_category_id"
+                        context="{'group_by': 'category_id'}" /> -->
+
+                    <field name="product_id" string="Product" />
+                    <field name="category_id" string="Category" />
+                </group>
+            </search>
+        </field>
+    </record>
+
+</odoo>
