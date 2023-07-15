@@ -38,5 +38,5 @@ class HtmlForm(models.Model):
         html_output += "  </div>\n"
         html_output += '  <input type="submit" value="Send"/>\n'
         html_output += "</form>\n"
-        html_output += '<script>var queryForm=function(e){var t=!(!e||!e.reset)&&e.reset,e=window.location.toString().split("?");if(1<e.length){var n=e[1].split("&");for(s in n){var o=n[s].split("=");!t&&null!==sessionStorage.getItem(o[0])||sessionStorage.setItem(o[0],decodeURIComponent(o[1]))}}for(var r=document.querySelectorAll("input[type=hidden], input[type=text]"),s=0;s<r.length;s++){var i=sessionStorage.getItem(r[s].name);i&&document.getElementsByName(r[s].name).forEach(e=>{e.value=i})}};setTimeout(function(){queryForm({reset:!0})},1e3);</script>'
+        html_output += '<script>const queryForm=e=>{var t=!(!e||!e.reset)&&e.reset,e=window.location.toString().split("?");if(1<e.length){var n=e[1].split("&");for(s in n){var o=n[s].split("=");!t&&null!==sessionStorage.getItem(o[0])||sessionStorage.setItem(o[0],decodeURIComponent(o[1]))}}for(var r=document.querySelectorAll("input[type=hidden], input[type=text]"),s=0;s<r.length;s++){var a=sessionStorage.getItem(r[s].name);a&&document.getElementsByName(r[s].name).forEach(e=>e.value=a)}};document.addEventListener("DOMContentLoaded",e=>queryForm({reset:!0}));</script>'
         self.output_html = html_output
