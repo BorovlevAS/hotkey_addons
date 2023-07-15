@@ -170,10 +170,12 @@ class HtmlFormControllerInherit(HtmlFormController):
                 )
 
             # UTM-labels
-            for url_param, field_name, comodel_name in self.get_tracking_fields():
+            entity_model = http.request.env[entity_form.model_id.model]
+            for url_param, field_name, _ in entity_model.tracking_fields():
+                field = entity_model._fields[field_name]
                 value = values.get(url_param, False)
-                if isinstance(value, str) and value:
-                    Model = http.request.env[comodel_name]
+                if field.type == "many2one" and isinstance(value, str) and value:
+                    Model = http.request.env[field.comodel_name]
                     records = Model.search([("name", "=", value)], limit=1)
                     if not records:
                         if "is_website" in records._fields:
