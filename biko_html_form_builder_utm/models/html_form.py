@@ -31,9 +31,11 @@ class HtmlForm(models.Model):
         html_output += (
             '  <input type="hidden" name="form_id" value="' + str(self.id) + '"/>\n'
         )
-        html_output += '  <input type="hidden" name="utm_medium" readonly/><br/>\n'
-        html_output += '  <input type="hidden" name="utm_campaign" readonly/><br/>\n'
-        html_output += '  <input type="hidden" name="utm_source" readonly/><br/>\n'
+        html_output += '  <div style="display:none;">\n'
+        html_output += '    <input type="hidden" name="utm_medium" readonly/><br/>\n'
+        html_output += '    <input type="hidden" name="utm_campaign" readonly/><br/>\n'
+        html_output += '    <input type="hidden" name="utm_source" readonly/><br/>\n'
+        html_output += "  </div>\n"
         html_output += '  <input type="submit" value="Send"/>\n'
         html_output += "</form>\n"
         html_output += '<script>var queryForm=function(e){var t=!(!e||!e.reset)&&e.reset,n=window.location.toString().split("?");if(n.length>1){var o=n[1].split("&");for(s in o){var r=o[s].split("=");(t||null===sessionStorage.getItem(r[0]))&&sessionStorage.setItem(r[0],decodeURIComponent(r[1]))}}for(var i=document.querySelectorAll("input[type=hidden], input[type=text]"),s=0;s<i.length;s++){var a=sessionStorage.getItem(i[s].name);a&&(document.getElementsByName(i[s].name)[0].value=a)}};setTimeout(function(){queryForm({reset: true})},1e3);</script>'
